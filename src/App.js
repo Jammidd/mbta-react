@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 
 import { RouteSelector } from "./components/RouteSelector";
@@ -12,20 +12,21 @@ function App() {
   const [stop, setStop] = useState(null);
   const [direction, setDirection] = useState(null);
 
+  useEffect(() => {
+    setStop(null);
+  }, [route]);
+
   const setSelectedRoute = (event) => {
     setRoute(event.name);
     setDirections(event.directions);
-    console.log(event);
   };
 
   const setSelectedStop = (event) => {
     setStop(event);
-    console.log(event);
   }
 
   const setSelectedDirection = (event) => {
     setDirection(event);
-    console.log(event);
   }
 
   return (

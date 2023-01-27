@@ -1,0 +1,56 @@
+.route-selector {
+    padding: 20px;
+    border: 1px solid #3e3e3e;
+    border-radius: 4px;
+}
+
+.route-selector h1 {
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+
+.route-selector h2 {
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.route-list {
+    border-radius: 4px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.route-button {
+    text-align: center;
+    border-radius: 50px;
+    border: 1px solid #5e5e5e;
+    padding: 5px 20px;
+    min-width: 100px;
+    cursor: pointer;
+}
+
+.route-button input {
+    display: none;
+}
+
+.route-button:has(input:checked) {
+    background-color: #84BE6A;
+}
+
+.result-container {
+    text-align: center;
+}
+
+.result-summary {
+    font-style: italic;
+}
+
+.result-time {
+    font-weight: 500;
+    display: block;
+    padding: 20px;
+    background-color: #e8e8e8;
+}

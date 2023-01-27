@@ -64,32 +64,36 @@ export const RouteSelector = (props) => {
             <div className="route-type-group">
                 <h2>Light Rail</h2>
 
-                { lightRoutes.map((item, index) => (
-                    <label className="route-button" key={`light-${index}`}>
-                        <input
-                            type="radio"
-                            name="routes"
-                            value={index}
-                            onChange={(e) => {setRoute("light", e)}}
-                        />
-                        {item.id}
-                    </label>
-                ))}
+                <div className="route-list">
+                    { lightRoutes.map((item, index) => (
+                        <label className="route-button" key={`light-${index}`}>
+                            <input
+                                type="radio"
+                                name="routes"
+                                value={index}
+                                onChange={(e) => {setRoute("light", e)}}
+                            />
+                            {item.id}
+                        </label>
+                    ))}
+                </div>
             </div>
 
             <div className="route-type-group">
                 <h2>Heavy Rail</h2>
-                { heavyRoutes.map((item, index) => (
-                    <label className="route-button" key={`heavy-${index}`}>
-                        <input
-                            type="radio"
-                            name="routes"
-                            value={index}
-                            onChange={(e) => {setRoute("heavy", e)}}
-                        />
-                        {item.id}
-                    </label>
-                ))}
+                <div className="route-list">
+                    { heavyRoutes.map((item, index) => (
+                        <label className="route-button" key={`heavy-${index}`}>
+                            <input
+                                type="radio"
+                                name="routes"
+                                value={index}
+                                onChange={(e) => {setRoute("heavy", e)}}
+                            />
+                            {item.id}
+                        </label>
+                    ))} 
+                </div>
             </div>
         </div>
     );

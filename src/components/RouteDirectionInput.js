@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 import "./RouteSelector.css";
 
@@ -10,18 +10,21 @@ export const RouteDirectionInput = (props) => {
 
     return (
         <div className="route-selector">
-            <h1>Select a Direction</h1>
-            <div className="route-direction-group">
-                { directions.map((item) => (
+            <h1>Direction</h1>
+            <div className="route-list">
+                { directions.map((item, index) => (
                     <label
-                        className="direction-button"
+                        className="route-button"
                         key={item}
                     >
                         <input
                             type="radio"
                             name="directions"
                             value={item}
-                            onChange={(e) => updateDirection(item)}
+                            onChange={(e) => updateDirection({
+                                name: item,
+                                id: index
+                            })}
                         />
                         {item}
                     </label>

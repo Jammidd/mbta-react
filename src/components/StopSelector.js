@@ -26,34 +26,33 @@ export const StopSelector = (props) => {
             );
     };
 
-    // useEffect(() => {
-    //     setSelectedRoute(route);
-    //     getStops();
-    // }, []);
-
     useEffect(() => {
         setSelectedRoute(route);
         getStops();
     }, [route]);
 
     const setStop = (event) => {
-        const stop = event.target.value;
-        updateStop?.(stop);
+        const stopIndex = event.target.value;
+        const stop = stops[stopIndex]
+        updateStop?.({
+            name: stop?.attributes?.name,
+            id: stop?.id
+        });
     };
 
     return (
         <div className="route-selector">
-            <h1>Select a stop</h1>
-            <div className="route-stop-group">
-                { stops.map((item) => (
+            <h1>Stop</h1>
+            <div className="route-list">
+                { stops.map((item, index) => (
                     <label
                         key={`stops-${item.id}`}
-                        className="stop-button"
+                        className="route-button"
                     >
                         <input
                             type="radio"
                             name="stops"
-                            value={item.id}
+                            value={index}
                             onChange={setStop}
                         />
                         {item?.attributes?.name}

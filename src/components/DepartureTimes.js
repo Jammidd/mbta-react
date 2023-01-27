@@ -10,9 +10,9 @@ export const DepartureTimes = (props) => {
         direction
     } = props;
 
-    const [activeRoute, setActiveRoute] = useState(null);
-    const [activeStop, setActiveStop] = useState(null);
-    const [activeDirection, setActiveDirection] = useState(null);
+    const [, setActiveRoute] = useState(null);
+    const [, setActiveStop] = useState(null);
+    const [, setActiveDirection] = useState(null);
 
     const [nextDeparture, setNextDeparture] = useState(null);
 
@@ -23,7 +23,7 @@ export const DepartureTimes = (props) => {
     const baseUrl = "https://api-v3.mbta.com";
 
     const getDepartureTimes = () => {
-        fetch(`${baseUrl}/predictions?filter[stop]=${stop}&filter[direction_id]=${direction}`, headers)
+        fetch(`${baseUrl}/predictions?filter[stop]=${stop.id}&filter[direction_id]=${direction.id}`, headers)
             .then(res => res.json())
             .then(
                 (result) => {
@@ -39,6 +39,9 @@ export const DepartureTimes = (props) => {
     };
 
     useEffect(() => {
+        setActiveDirection(direction);
+        setActiveRoute(route);
+        setActiveStop(stop);
         getDepartureTimes();
     }, [
         route,
@@ -50,8 +53,8 @@ export const DepartureTimes = (props) => {
         <div className="route-selector">
             <h1>Next Departure Time</h1>
             <div className="result-container">
-                <p>The next scheduled departure for {stop} on {route} heading {direction} is:</p>
-                {formatDate(nextDeparture)}
+                <p className="result-summary">The next scheduled departure from <b>{stop.name}</b> on <b>{route}</b> heading <b>{direction.name}</b> is:</p>
+                <p className="result-time">{formatDate(nextDeparture)}</p>
             </div>
         </div>
     );
